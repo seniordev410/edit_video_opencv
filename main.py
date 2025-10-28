@@ -88,7 +88,7 @@ class MyListItem(BoxLayout):
         assure_path_exists("origin_video/")
         assure_path_exists("converted_video/")
 
-        url = "https://match-meeting.com/iphone_cut.php?token=bJLbvhkcKcghjcFRthyserdrTSewegdtzjf6ufvzkj&\
+        url = "https://match-meeting.com/iphone_cut.php?token=123123123&\
         email=" + user["email"] + "&key=" + user["pass"] + "&ID=" + text
 
         result = requests.get(url)
