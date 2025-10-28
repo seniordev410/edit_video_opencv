@@ -1,0 +1,365 @@
+#:import C kivy.utils.get_color_from_hex
+#:import os os
+
+<ScreenManagement>:
+    LoginScreen:
+    ListScreen:
+
+<LoginScreen>:
+    
+    name: 'LoginPage'
+    id: screen1
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgb:0/255., 0/255., 0/255.
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        ### top part
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y:0.1
+            padding:3
+            canvas.before:
+                Color:
+                    rgba: 208/255, 128/255, 34/255, 1
+                Line:
+                    points: self.x , self.y, self.x + self.width, self.y
+                    width: 1
+            Label:
+                size_hint_x: 0.02
+                font_size:24
+            Label:
+                size_hint_x: 0.14
+                text_size: self.size
+                valign: "middle"
+                padding_x: 10
+                font_size:24
+                canvas.before:
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        source: 'mark.png'
+            Label:
+                size_hint_x: 0.84
+                font_size:24
+
+
+        # body part        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y:0.8
+          
+            # password part
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y:1
+                padding:3
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_x:0.02
+                    padding:3
+                
+                # main part
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_x:0.8
+                    padding:3
+                    
+                    ############# main body part ##############
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y:0.2
+                        padding:10
+
+                    
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y:0.18
+                        padding:8
+
+                        Label:
+                            text:'E-mail '
+                            size_hint: 0.18, None
+                            height: 40
+                            font_size:22
+                            
+                        
+                        TextInput:
+                            id: edt_email
+                            padding_x:5
+                            size_hint:0.8, None
+                            multiline:False
+                            font_size: 22
+                            height: 40
+                            background_color: 0, 0, 0, 0
+                            cursor_color: 1, 1, 1, 1
+                            canvas.before:
+                                Color:
+                                    rgba: 208/255, 128/255, 34/255, 1
+                                Line:
+                                    width: 1
+                                    rectangle: self.x, self.y, self.width, self.height
+                                Color:
+                                    rgba: 255/255, 255/255, 255/255, 1
+                        Label:
+                            size_hint: 0.02, None
+                            height: 40
+                            font_size:22
+                    
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y:0.18
+                        padding:8
+
+                        Label:
+                            text:'Key'
+                            size_hint: 0.18, None
+                            height: 40
+                            font_size:22
+                            
+                        
+                        TextInput:
+                            id: edt_key
+                            padding_x:5
+                            size_hint:0.8, None
+                            multiline:False
+                            font_size: 22
+                            height: 40
+                            background_color: 0, 0, 0, 0
+                            cursor_color: 1, 1, 1, 1
+                            canvas.before:
+                                Color:
+                                    rgba: 208/255, 128/255, 34/255, 1
+                                Line:
+                                    width: 1
+                                    rectangle: self.x, self.y, self.width, self.height
+                                Color:
+                                    rgba: 255/255, 255/255, 255/255, 1
+                        Label:
+                            size_hint: 0.02, None
+                            height: 40
+                            font_size:22
+                    
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y:0.2
+                        padding:8
+
+                        Label:
+                            text:''
+                            size_hint_x: 0.2
+                            font_size:22
+                        Button:
+                            id: btn_login
+                            text:'Login'
+                            size_hint: 0.6, None
+                            height: 40
+                            font_size:20
+                            background_color: 208/255, 128/255, 34/255, 1
+                            background_normal: ""
+                            on_press:root.login()
+                            #on_press: app.root.current = 'ListPage'
+
+                        Label:
+                            text:''
+                            size_hint_x: 0.2
+                            font_size:22
+
+                    # empty part
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_y:0.1
+                        padding:3
+                    
+
+                # empty part
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_x:0.02
+                    padding:3
+
+        # footer page
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y:0.1
+            
+
+##################################################
+#:import lv kivy.uix.listview
+#:import la kivy.adapters.listadapter
+<ListScreen>:
+    name: 'ListPage'
+    id: screen1
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgb:0/255., 0/255., 0/255.
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        ### top part
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y:0.1
+            padding:3
+            canvas.before:
+                Color:
+                    rgba: 208/255, 128/255, 34/255, 1
+                Line:
+                    points: self.x , self.y, self.x + self.width, self.y
+                    width: 1
+            Label:
+                size_hint_x: 0.02
+                font_size:24
+            Label:
+                size_hint_x: 0.14
+                text_size: self.size
+                valign: "middle"
+                padding_x: 10
+                font_size:24
+                canvas.before:
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        source: 'mark.png'
+            Label:
+                text:''
+                size_hint_x: 0.6
+                font_size:24
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x:0.2
+                Label:
+                    id: lbl_username
+                    text:'username'
+                    size_hint_y: 0.5
+                    font_size:24
+                
+                Button:
+                    id: btn_logout
+                    text:'Logout'
+                    size_hint: 1, None
+                    height: 35
+                    font_size:20
+                    background_color: 208/255, 128/255, 34/255, 1
+                    background_normal: ""
+                    on_press:root.logout()
+            Label:
+                text:''
+                size_hint_x: 0.04
+                font_size:24    
+            
+        # body part        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y:0.8
+           
+            # empty part
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y:0.01
+                padding:3
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y:0.98
+                padding:3
+                    
+                ScrollView:
+                    size_hint: 1, 1
+                    GridLayout:
+                        id: container
+                        cols: 1
+                        padding: 5
+                        spacing: 5
+                        height: self.minimum_height
+                        size_hint: None, None
+                        do_scroll_x: False
+                        
+
+               
+        # footer part    
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y:0.1
+            padding: 3
+            Label:
+                id: lbl_down
+                text:''
+                size_hint: 1, 0.5
+                font_size:16
+                text_size: self.size
+                valign: "middle"
+            Label:
+                id: lbl_process
+                text:''
+                size_hint: 1, 0.5
+                font_size:16
+                text_size: self.size
+                valign: "middle"
+###############################
+<MyListItem>
+    size_hint: None, None
+    size: 480, 50
+    padding: 5
+    orientation: 'horizontal'
+    canvas.before:
+        Color:
+            rgba: 208/255, 128/255, 34/255, 1
+        Line:
+            points: self.x , self.y, self.x + self.width, self.y
+            width: 1
+    Label:
+        id: lbl_text
+        text:''
+        size_hint: 0.7, None
+        text_size: self.size
+        height: 45
+        font_size:24
+    Label:
+        id: lbl_id
+        text:''
+        size_hint: 0.05, None
+        text_size: self.size
+        color: 0, 0, 0, 1
+        height: 45
+        font_size:24    
+    Button:
+        id: btn_export
+        text:'Export'
+        size_hint: 0.25, None
+        height: 30
+        font_size:20
+        background_color: 208/255, 128/255, 34/255, 1
+        background_normal: ""
+        on_press:root.export_click(lbl_id.text)
+       
+
+################
+<UloginFail>:
+    title: "NOTICE"
+    font_size: 32
+    size_hint: None, None
+    size: 400, 250
+    auto_dismiss: True
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                font_size: 18
+                align: 'center'
+                background_color: (0,0,0,1)
+                text: "Wrong email or Password!\n Please Try Again"
+            BoxLayout:
+                orientation: "horizontal"
+                Button:
+                    size_hint: 0.5, 0.5
+                    text: "OK"
+                    on_release: root.dismiss()
+
